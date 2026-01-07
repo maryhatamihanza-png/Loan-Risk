@@ -1,2 +1,2 @@
 # Loan-Risk
-Fraud Detection | Credit Risk | Customer Portfolio
+Power BI Dashboard - Fraud Detection| Credit Risk| Customer Portfolio
