@@ -117,13 +117,16 @@ EDA Involved exploring the key question such as:
 • Mid-Level: Credit risk managers, compliance officers, fraud analysts, finance team
 • Operational-Level: Loan officers, IT/security teams, operations managers
 #### Stakeholder Influence Level Interest Level
-Executives / Board High High
-Credit Risk Managers High High
-Fraud Analysts Medium-High High
-Compliance Officers Medium-High High
-Finance Team Medium Medium-High
-Loan Officers Medium Medium
-IT / Security Teams Medium Medium
+
+|Stakeholder|Influence Level|Interest Level|
+|-----------|---------------|--------------|
+|Executives Board|High|High|
+|Credit Risk Managers|High|High|
+|Fraud Analysts|Medium-High|High|
+|Compliance Officers|Medium-High|High|
+|Finance Team|Medium|Medium-High|
+|Loan Officers|Medium|Medium|
+|IT / Security Teams|Medium|Medium|
 
 ### Purpose of Each Tab
 • Executive Summary: Consolidates high-level organizational performance, highlighting credit portfolio health, fraud exposure, and financial risk for strategic decision-making.
