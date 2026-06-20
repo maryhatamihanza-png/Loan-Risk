@@ -12,10 +12,10 @@
 - [Exploratory Data Analysis](#Exploratory-Data-Analysis)
 - [Audiences / Stakeholders Mapping](#Audiences-/-Stakeholders-Mapping)
 
-### Problem Statement
+## Problem Statement
 The organization faces increasing fraud risk and credit exposure, which can lead to financial losses, regulatory challenges, and reputational damage. Currently, there is a lack of consolidated, actionable insights that allow executives, risk managers, and operational teams to monitor suspicious activities, understand the underlying causes of fraud, and evaluate credit risk effectively.
 
-### Project Scope
+## Project Scope
 • Reduce fraud risk by providing actionable insights through dashboards.
 • Highlight suspicious activities and anomalies in transactions and customer behavior.
 • Uncover underlying causes of fraud to inform mitigation strategies.
@@ -26,30 +26,30 @@ The organization faces increasing fraud risk and credit exposure, which can lead
 • AI-based risk forecasting or automated recommendation engines.
 • Analysis beyond historical and current trends in fraud, credit risk, and customer behavior.
 
-### Objectives
-#### Executive Summary Dashboard
+## Objectives
+### Executive Summary Dashboard
 • Provide executives with a high-level view of fraud risk and credit exposure.
 • Enable data-driven strategic decision-making by consolidating key financial, credit, and fraud indicators.
 • Improve organizational transparency and accountability by offering a single source of truth for stakeholders.
-#### Credit Analysis Dashboard
+### Credit Analysis Dashboard
 • Assess borrower risk profiles through metrics such as debt-to-income ratio, late payment frequency, and account status.
 • Identify early warning signals of potential defaults or credit deterioration.
 • Support credit officers and risk managers in making informed lending decisions and reducing non-performing loans.
 • Provide regulatory-compliant insights into credit portfolio health.
-#### Fraud Detection Dashboard
+### Fraud Detection Dashboard
 • Detect suspicious activities and anomalies through advanced fraud metrics and behavioral patterns.
 • Analyze underlying causes of fraud to strengthen risk controls.
 • Support fraud analysts and compliance officers in prioritizing investigations and mitigating losses.
 • Enable proactive fraud prevention strategies by identifying high-risk accounts, behaviors, and transactions.
 • Enhance regulatory reporting and governance by maintaining audit-ready fraud insights.
 
-### Dashboard Tabs
+## Dashboard Tabs
 • Executive Summary
 • Credit Risk Analysis
 • Fraud Detection Analysis
 • Customer Overview
 
-### Data Sources
+## Data Sources
 - Customer records (CSV) format
 - Transaction history (CSV) format
 - Credit bureau data (CSV) format
@@ -63,18 +63,20 @@ The organization faces increasing fraud risk and credit exposure, which can lead
 ### Tools
 - Excel for data validation
 - SQL for data analysis and testing data consitency and accuracy
-- Power Query for data preperation for loading
+- Power Query for getting data from importmood, data profiling, data cleaning and preperation for loading
 - Power BI Desktop data modeling, developing dashboards.
-- Power BI Service creating Worksapce for collaboration and configuring the security and permision level.
-- Power BI App published dashboards.
+- Power BI Service creating Worksapce for collaboration and configuring the security and permision level as well as publishing the dashboards.
+- Power BI App published dashboards on the app too.
 
 ### Data cleaning and preperation
 1- Before touching the data, I first:
+- assessed data structure, content, and quality (Data Profiling for Data types
+Duplicate records, Missing values, Data quality issues, Column meanings)
 - Reviewed all tables (customers, loans, transactions, fraud, credit scores).
 - Identified grain (customer-level, loan-level, transaction-level).
 - Mapped how tables should connect (Customer → Loan → Transaction).
 - Defined what metrics the business needed (risk, fraud, portfolio KPIs).
-2- After loading the data into Power BI / SQL:
+2- After transforming the data into Power Query:
 - Checked column types (dates, currency, percentages, IDs).
 - Scanned for:
  - Nulls and blanks
@@ -101,6 +103,29 @@ The organization faces increasing fraud risk and credit exposure, which can lead
  - High-risk labels based on probability/score thresholds
  - Tenure buckets (New vs Returning customers)
  - Loan categories normalization (Emergency, Auto, Personal, etc.)
+   
+### Data Modeling
+ - filtering the data columns to optimize the semantic model performance
+ - devloping dimenssion tables and Fact tables.
+ - Identifying the primary and forgien keys and how table has the relationships
+ - Loading the data to move into Power BI in the Model View.
+ - Create a star schema
+  - Develped the one-to-many relationships between fact in the center and dimansion tables around the fact tables
+ - Hnadling the manay to many relationship
+  - Creating briding tables becuase facing the many to many relationship.
+##### Dax Code
+```DAX
+CustomerDateBridge =
+SELECTCOLUMNS (
+    Applications,
+    "CustomerID", Applications[CustomerID],
+    "Date", Applications[ApplicationDate],
+    "MonthName", FORMAT(Applications[ApplicationDate], "MMMM"),
+    "MonthNumber", MONTH(Applications[ApplicationDate]),
+    "Year", YEAR(Applications[ApplicationDate])
+)
+```
+
 
 ### Exploratory Data Analysis
 EDA Involved exploring the key question such as:
